@@ -1,0 +1,10 @@
+{'botA': {'action': True, 'score': 3}, 'botB': {'action': True, 'score': 3}}
+{'botA': {'action': True, 'score': 0}, 'botB': {'action': False, 'score': 5}}
+{'botA': {'action': True, 'score': 0}, 'botB': {'action': False, 'score': 5}}
+{'botA': {'action': True, 'score': 0}, 'botB': {'action': False, 'score': 5}}
+{'botA': {'action': True, 'score': 0}, 'botB': {'action': False, 'score': 5}}
+{'botA': {'action': True, 'score': 0}, 'botB': {'action': False, 'score': 5}}
+{'botA': {'action': True, 'score': 0}, 'botB': {'action': False, 'score': 5}}
+{'botA': {'action': True, 'score': 0}, 'botB': {'action': False, 'score': 5}}
+{'botA': {'action': True, 'score': 0}, 'botB': {'action': False, 'score': 5}}
+{'botA': {'action': True, 'score': 0}, 'botB': {'action': False, 'score': 5}}

@@ -1,7 +1,7 @@
 from typing import Callable
 
 class Bot:
-    def __init__(self, submitterName: str, botName: str,funct: Callable[[dict], bool]):
+    def __init__(self, submitterName: str, botName: str,funct: Callable[['Bot', dict], bool]):
         self.submitterName = submitterName
         self.botName = botName
         self.assignment = ""
@@ -9,4 +9,7 @@ class Bot:
         self.funct = funct  
 
     def getAction(self, currentRoundHistory: dict): 
-        self.funct(currentRoundHistory)
+        test = self.funct(self, currentRoundHistory)
+        #print(self.botName, test)
+        return test
+    

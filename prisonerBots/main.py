@@ -1,13 +1,10 @@
 import os
+from matchResults import MatchResult
 from bot import Bot
+from alwaysCoop_bot import coopBot
+from ASH_bot import TitForTatBot
 
-class BotResult:
-    cooperated: bool
-    score: int
 
-class MatchResult:
-    botA: BotResult
-    botB: BotResult
 
 def getOutputFilePath():
     def ensureOutputFile():
@@ -20,6 +17,12 @@ def getOutputFilePath():
     return ensureOutputFile()
         
 outputFile = getOutputFilePath()
+
+def writeToOutput(history: list):
+    f = open(outputFile, 'w')
+    for lines in history:
+        f.write(f'{lines}\n')
+    f.close()
 
 def simulateRound(actionA: bool, actionB: bool):
     results = [0, 0]
@@ -36,13 +39,26 @@ def simulateRound(actionA: bool, actionB: bool):
 
 def simulateMatch(botA: Bot, botB: Bot, totalRounds: int):
     matchHistory = []
+    botA.assignment = "botA"
+    botB.assignment = "botB"
+    botA.oppAssignment = "botB"
+    botB.oppAssignment = "botA"
+
     for i in range(totalRounds):
-        botAAction = botA.getAction(),
-        botBAction = botB.getAction(),
+        botAAction = botA.getAction(matchHistory)
+        botBAction = botB.getAction(matchHistory)
         roundResults = simulateRound(botAAction, botBAction)
         thisRound = {
-            "botAAction": botAAction,
-            "botBAction": botBAction,
-            "botAScore": roundResults[0],
-            "botBScore":roundResults[1],
+            "botA": {
+                "action": botAAction,
+                "score": roundResults[0],
+            },
+            "botB": {
+                "action": botBAction,
+                "score":roundResults[1],
+            }
         }
+        matchHistory.append(thisRound)
+    writeToOutput(matchHistory)
+
+simulateMatch(coopBot, TitForTatBot, 10)

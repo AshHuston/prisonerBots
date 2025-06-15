@@ -1,19 +1,18 @@
-from main import MatchResult
+from matchResults import MatchResult
 from bot import Bot
 
-def funct(currentMatchHistory: list[MatchResult]) -> bool:
-# This strategy is simple. We start with cooperating, then we just do whatever the opponent did last round.
-# Strategies could be much more complex. Maybe even simpler.
+def funct(self, currentMatchHistory: list[MatchResult]) -> bool:
+    # This strategy is simple. We start with cooperating, then we just do whatever the opponent did last round.
+    # Strategies could be much more complex. Or maybe even simpler.
     willCooperate: bool = True
     if len(currentMatchHistory) > 0:
-        willCooperate = currentMatchHistory[-1][myBot["oppAssignment"]]["cooperated"]
-    print(willCooperate)
+        #print(currentMatchHistory[-1])
+        willCooperate = currentMatchHistory[-1][f'{self.oppAssignment}']['action']   
+    print(willCooperate) 
     return willCooperate
 
-myBot = Bot(
+TitForTatBot = Bot(
     "Ash Huston",
     "Tit for Tat",
     funct
 )
-
-print(myBot.getAction([]))
