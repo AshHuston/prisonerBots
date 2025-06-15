@@ -1,8 +1,8 @@
 import os
 from matchResults import MatchResult
 from bot import Bot
-from alwaysCoop_bot import coopBot
-from ASH_bot import TitForTatBot
+import alwaysCoop_bot
+import ASH_bot
 
 
 
@@ -61,4 +61,4 @@ def simulateMatch(botA: Bot, botB: Bot, totalRounds: int):
         matchHistory.append(thisRound)
     writeToOutput(matchHistory)
 
-simulateMatch(coopBot, TitForTatBot, 10)
+simulateMatch(alwaysCoop_bot.strategy, ASH_bot.strategy, 10)

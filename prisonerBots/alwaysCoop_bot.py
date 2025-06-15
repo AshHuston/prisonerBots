@@ -6,7 +6,7 @@ def funct(self, currentMatchHistory: list[MatchResult]) -> bool:
     willCooperate: bool = True
     return willCooperate
 
-coopBot = Bot(
+strategy = Bot(
     "Westley Huston",
     "Always cooperate",
     funct

@@ -4,12 +4,12 @@ class Bot:
     def __init__(self, submitterName: str, botName: str,funct: Callable[['Bot', dict], bool]):
         self.submitterName = submitterName
         self.botName = botName
+        self.funct = funct  
         self.assignment = ""
         self.oppAssignment = ""
-        self.funct = funct  
+        self.additionalVars = {}
 
     def getAction(self, currentRoundHistory: dict): 
-        test = self.funct(self, currentRoundHistory)
-        #print(self.botName, test)
-        return test
+        return self.funct(self, currentRoundHistory)
+    
     

@@ -8,10 +8,9 @@ def funct(self, currentMatchHistory: list[MatchResult]) -> bool:
     if len(currentMatchHistory) > 0:
         #print(currentMatchHistory[-1])
         willCooperate = currentMatchHistory[-1][f'{self.oppAssignment}']['action']   
-    print(willCooperate) 
     return willCooperate
 
-TitForTatBot = Bot(
+strategy = Bot(
     "Ash Huston",
     "Tit for Tat",
     funct

@@ -1,17 +1,20 @@
-from main import MatchResult, BotData
+from matchResults import MatchResult
+from bot import Bot
 
-myBot: BotData = {
-    "submitterName": "Your Name",
-    "botName": "Strategy Name",
-    "assignment":  "",     #'botA' or 'botB'. Will be set by the tournament simulator. Don't touch it.
-    "oppAssignment": "",   #'botA' or 'botB'. Will be set by the tournament simulator. Don't touch it.
-}
+# You can store and access any variables you want to persist between rounds with the dict self.additionalVars
+# These will be scoped only to the current itertation of the tournament.
 
-def getAction(currentMatchHistory: list[MatchResult]) -> bool:
+def funct(self, currentMatchHistory: list[MatchResult]) -> bool:
     willCooperate: bool = None
-    
+
     #
-    #  YOUR CODE HERE
+    # Your code here
     #
 
     return willCooperate
+
+strategy = Bot(
+    "Author name",  # <-- Change this
+    "Bot name",     # <-- Change this
+    funct
+)
