@@ -1,10 +1,8 @@
 import os
 from matchResults import MatchResult
 from bot import Bot
-import alwaysCoop_bot
-import ASH_bot
-
-
+import submissions.alwaysCoop_bot as alwaysCoop_bot
+import submissions.ASH_bot as ASH_bot
 
 def getOutputFilePath():
     def ensureOutputFile():
@@ -15,8 +13,6 @@ def getOutputFilePath():
                 pass  # just create the file
         return file_path
     return ensureOutputFile()
-        
-outputFile = getOutputFilePath()
 
 def writeToOutput(history: list):
     f = open(outputFile, 'w')
@@ -61,4 +57,6 @@ def simulateMatch(botA: Bot, botB: Bot, totalRounds: int):
         matchHistory.append(thisRound)
     writeToOutput(matchHistory)
 
+
+outputFile = getOutputFilePath()
 simulateMatch(alwaysCoop_bot.strategy, ASH_bot.strategy, 10)
